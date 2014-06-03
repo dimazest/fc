@@ -44,4 +44,5 @@ packges:
       - libpng12-dev
       - libyaml-dev
       - libzmq-dev
+      - python3-pip
       {% endif %}
