@@ -1,17 +1,3 @@
-{% if grains['os'] == 'Ubuntu' and grains['osrelease'] == '13.04' %}
-python3-pip:
-  pkg.installed
-
-numexpr:
-  pip.installed:
-    - require:
-      - pkg: python3-pip
-    - bin_env: /usr/bin/pip3
-    - user: vagrant
-    - install_options:
-      - --user
-{% endif %}
-
 bashrc:
   file.append:
     - name: /home/vagrant/.bashrc
@@ -27,6 +13,11 @@ tmux_conf:
     - source: /srv/home/tmux.conf
     - force: true
 
+buildout_conf:
+  file.copy:
+    - name: /home/vagrant/.buildout.conf
+    - source: /srv/home/buildout.conf
+    - force: true
 
 tools_buildout_bootstrap:
   cmd.run:
